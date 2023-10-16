@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 import { shade } from 'polished';
 
-export const SearchContainer = styled.div`
+export const Container = styled.div`
   display: flex;
   gap: 8px;
 `;
 
-export const SearchInputContainer = styled.div`
+export const InputContainer = styled.div`
   width: 100%;
   height: 3.37rem;
   padding: 1rem;
@@ -16,7 +16,7 @@ export const SearchInputContainer = styled.div`
   border-radius: 8px;
 `;
 
-export const SearchInput = styled.input`
+export const Input = styled.input`
   width: 100%;
   font-size: 1rem;
   border: none;
@@ -26,7 +26,7 @@ export const SearchInput = styled.input`
   font-weight: 400;
 `;
 
-export const SearchButton = styled.button`
+export const Button = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;

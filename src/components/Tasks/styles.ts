@@ -56,20 +56,26 @@ export const TaskComponent = styled.div`
   border: 1px solid #333333;
   border-radius: 8px;
 
-  button {
-    width: 1.5rem;
-    height: 1.5rem;
-    border: 2px solid #4EA8DE;
-    border-radius: 16px;
-    background: none;
-  }
-
   p {
     margin-left: 1rem;
     font-weight: 400;
     font-size: 0.87rem;
     color: #F2F2F2;
   }
+`;
+
+export const CheckButton = styled.button`
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 2px solid #4EA8DE;
+  border-radius: 16px;
+  background: none;
+`;
+
+export const TrashButton = styled.button`
+  margin-left: auto;
+  background: none;
+  border: none;
 
   svg {
     margin-left: auto;

@@ -1,5 +1,5 @@
 import { Trash2 } from "lucide-react";
-import { TasksContainer, TaskHeaderInfo, TasksHeader, TaskHeaderCreated, TaskHeaderDone, TaskList, TaskComponent } from "./styles";
+import { TasksContainer, TaskHeaderInfo, TasksHeader, TaskHeaderCreated, TaskHeaderDone, TaskList, TaskComponent, TrashButton, CheckButton } from "./styles";
 import { useMemo } from "react";
 
 export interface TaskEntity {
@@ -11,9 +11,10 @@ export interface TaskEntity {
 
 type TasksProps = {
   taskList: TaskEntity[]
+  removeTask: (id: number) => void
 }
 
-export function Tasks({ taskList }: TasksProps) {
+export function Tasks({ taskList, removeTask }: TasksProps) {
   const createdTasks = useMemo(() => {
     return taskList.filter(task => !task.deletedAt)
   }, [taskList])
@@ -42,9 +43,12 @@ export function Tasks({ taskList }: TasksProps) {
       <TaskList>
         {taskList.map(task => (
           <TaskComponent key={task.id}>
-            <button type="button" />
+            <CheckButton type="button" />
             <p>{task.description}</p>
-            <Trash2 size={20} />
+
+            <TrashButton type="button" onClick={() => removeTask(task.id)}>
+              <Trash2 size={20} />
+            </TrashButton>
           </TaskComponent>
         ))}
       </TaskList>
