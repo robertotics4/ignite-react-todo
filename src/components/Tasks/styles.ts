@@ -47,8 +47,6 @@ export const TaskList = styled.ul`
 export const TaskComponent = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 1rem;
   margin-top: 1rem;
   width: 100%;
   height: 4.5rem;
@@ -67,12 +65,14 @@ export const TaskComponent = styled.div`
   }
 
   p {
+    margin-left: 1rem;
     font-weight: 400;
     font-size: 0.87rem;
     color: #F2F2F2;
   }
 
   svg {
+    margin-left: auto;
     color: #808080;
     transition: color 0.2s;
 

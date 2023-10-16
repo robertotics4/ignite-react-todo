@@ -1,0 +1,31 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "description": "Finalizar desafio 01 do ignite"
+    },
+    {
+      "id": 2,
+      "description": "Responder Quiz do ignite"
+    },
+    {
+      "id": 3,
+      "description": "Iniciar novo módulo"
+    },
+    {
+      "id": 4,
+      "description": "Fazer evidência em vídeo da MKOM",
+      "finishedAt": "2023-10-16T10:32:17-03:00"
+    },
+    {
+      "id": 5,
+      "description": "Abertura da semana da tecnologia",
+      "finishedAt": "2023-10-16T10:32:17-03:00"
+    },
+    {
+      "id": 6,
+      "description": "Estudar Nextjs",
+      "deletedAt": "2023-10-16T10:32:17-03:00"
+    }
+  ]
+}
