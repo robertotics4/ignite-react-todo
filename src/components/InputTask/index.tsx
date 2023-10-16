@@ -23,6 +23,8 @@ export function InputTask({ getNextId, addTask }: InputTaskProps) {
         id: getNextId(),
         description,
       })
+
+      setDescription('')
     }
   }
 

@@ -33,6 +33,31 @@ export function Main() {
     }
   }
 
+  async function finishTask(id: number) {
+    try {
+      const now = new Date()
+
+      await axios.put(`${API_BASE_URL}/tasks/${id}`, {
+        ...tasks[id],
+        finishedAt: now
+      })
+
+      const updatedTasks = tasks.map(task => {
+        const updated = {...task}
+
+        if (updated.id === id) {
+          updated.finishedAt = now;
+        }
+
+        return updated;
+      })
+
+      setTasks(updatedTasks)
+    } catch (error) {
+      alert('Falha ao finalizar tarefa')
+    }
+  }
+
   useEffect(() => {
     axios.get<TaskEntity[]>(`${API_BASE_URL}/tasks`)
     .then(result => {
@@ -43,7 +68,7 @@ export function Main() {
   return (
     <Container>
       <InputTask getNextId={getNextId} addTask={addTask} />
-      <Tasks taskList={tasks} removeTask={removeTask} />
+      <Tasks taskList={tasks} removeTask={removeTask} finishTask={finishTask} />
     </Container>
   );
 }

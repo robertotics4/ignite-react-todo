@@ -1,4 +1,4 @@
-import { Trash2 } from "lucide-react";
+import { Check, Trash2 } from "lucide-react";
 import { TasksContainer, TaskHeaderInfo, TasksHeader, TaskHeaderCreated, TaskHeaderDone, TaskList, TaskComponent, TrashButton, CheckButton } from "./styles";
 import { useMemo } from "react";
 
@@ -12,9 +12,10 @@ export interface TaskEntity {
 type TasksProps = {
   taskList: TaskEntity[]
   removeTask: (id: number) => void
+  finishTask: (id: number) => void
 }
 
-export function Tasks({ taskList, removeTask }: TasksProps) {
+export function Tasks({ taskList, removeTask, finishTask }: TasksProps) {
   const createdTasks = useMemo(() => {
     return taskList.filter(task => !task.deletedAt)
   }, [taskList])
@@ -42,8 +43,10 @@ export function Tasks({ taskList, removeTask }: TasksProps) {
 
       <TaskList>
         {taskList.map(task => (
-          <TaskComponent key={task.id}>
-            <CheckButton type="button" />
+          <TaskComponent finished={!!task.finishedAt} key={task.id}>
+            <CheckButton finished={!!task.finishedAt} type="button" onClick={() => finishTask(task.id)}>
+              {!!task.finishedAt && <Check size={20} />}
+            </CheckButton>
             <p>{task.description}</p>
 
             <TrashButton type="button" onClick={() => removeTask(task.id)}>

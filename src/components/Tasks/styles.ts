@@ -1,4 +1,8 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+
+interface CheckProps {
+  finished: boolean
+}
 
 export const TasksContainer = styled.div`
   display: flex;
@@ -44,7 +48,7 @@ export const TaskList = styled.ul`
   flex-direction: column;
 `;
 
-export const TaskComponent = styled.div`
+export const TaskComponent = styled.div<CheckProps>`
   display: flex;
   align-items: center;
   margin-top: 1rem;
@@ -61,15 +65,31 @@ export const TaskComponent = styled.div`
     font-weight: 400;
     font-size: 0.87rem;
     color: #F2F2F2;
+
+    ${props => props.finished && css`
+      text-decoration: line-through;
+      color: #808080;
+    `}
   }
 `;
 
-export const CheckButton = styled.button`
+export const CheckButton = styled.button<CheckProps>`
   width: 1.5rem;
   height: 1.5rem;
-  border: 2px solid #4EA8DE;
   border-radius: 16px;
-  background: none;
+
+
+  ${props => props.finished
+    ? css`
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #5E60CE;
+        border: none;`
+    : css`
+        background: none; 
+        border: 2px solid #4EA8DE;`
+  }
 `;
 
 export const TrashButton = styled.button`
