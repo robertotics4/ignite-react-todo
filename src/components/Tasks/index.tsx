@@ -1,5 +1,5 @@
-import { Check, Trash2 } from "lucide-react";
-import { TasksContainer, TaskHeaderInfo, TasksHeader, TaskHeaderCreated, TaskHeaderDone, TaskList, TaskComponent, TrashButton, CheckButton } from "./styles";
+import { Check, ClipboardList, Trash2 } from "lucide-react";
+import { TasksContainer, TaskHeaderInfo, TasksHeader, TaskHeaderCreated, TaskHeaderDone, TaskList, TaskComponent, TrashButton, CheckButton, TasksEmpty } from "./styles";
 import { useMemo } from "react";
 
 export interface TaskEntity {
@@ -42,18 +42,28 @@ export function Tasks({ taskList, removeTask, finishTask }: TasksProps) {
       </TasksHeader>
 
       <TaskList>
-        {taskList.map(task => (
-          <TaskComponent finished={!!task.finishedAt} key={task.id}>
-            <CheckButton finished={!!task.finishedAt} type="button" onClick={() => finishTask(task.id)}>
-              {!!task.finishedAt && <Check size={20} />}
-            </CheckButton>
-            <p>{task.description}</p>
+        {taskList.length > 0 ? (
+          taskList.map(task => (
+            <TaskComponent finished={!!task.finishedAt} key={task.id}>
+              <CheckButton finished={!!task.finishedAt} type="button" onClick={() => finishTask(task.id)}>
+                {!!task.finishedAt && <Check size={20} />}
+              </CheckButton>
+              <p>{task.description}</p>
 
-            <TrashButton type="button" onClick={() => removeTask(task.id)}>
-              <Trash2 size={20} />
-            </TrashButton>
-          </TaskComponent>
-        ))}
+              <TrashButton type="button" onClick={() => removeTask(task.id)}>
+                <Trash2 size={20} />
+              </TrashButton>
+            </TaskComponent>
+          ))
+        ) : (
+          <TasksEmpty>
+            <ClipboardList size={56} />
+            <div>
+              <strong>Você ainda não tem tarefas cadastradas</strong>
+              <p>Crie tarefas e organize seus itens a fazer</p>
+            </div>
+          </TasksEmpty>
+        )}
       </TaskList>
     </TasksContainer>
   );

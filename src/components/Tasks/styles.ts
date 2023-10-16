@@ -107,3 +107,29 @@ export const TrashButton = styled.button`
     }
   }
 `;
+
+export const TasksEmpty = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+
+  margin-top: 1rem;
+  padding: 4rem;
+
+  border-top: 1px solid #333333;
+
+  svg {
+    color: #808080;
+  }
+
+  div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+
+    font-size: 1rem;
+    color: #808080;
+  }
+`;
